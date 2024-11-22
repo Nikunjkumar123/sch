@@ -7,7 +7,9 @@ const db = require('./db');
 const app = express();
 app.use(bodyParser.json());
 
-
+process.on('uncaughtException', function (err) {
+    console.log(err);
+  });
 app.post('/addSchool', async (req, res) => {
     const { name, address, latitude, longitude } = req.body;
 
